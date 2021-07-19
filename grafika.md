@@ -1,19 +1,15 @@
-<style>
-  h1, h2, h3, h4, h5, h6 {
-  	font-family: "Source Code Pro Light"
-  }
-  
-  .slide_footer, .slide_page {
-  	font-family: "Source Code Pro"
-  }
-</style>
+---
+marp: true
+theme: my_style
+---
 
 # grafika
 Nikola Bebić
 
 ---
-<!-- footer: Grafika / Nikola Bebić / Petnica / 2018 
-	 page_number: true
+<!--
+  footer: Grafika / Nikola Bebić / Petnica / 2018
+  page_number: true
 -->
 
 # šta će nama grafika?
@@ -112,7 +108,7 @@ $$ S(s_x,s_y,s_z) = \begin{bmatrix}
 s_x & 0 & 0 & 0\\
 0 & s_y & 0 & 0\\
 0 & 0 & s_z & 0\\
-0 & 0 & 0 & 1 
+0 & 0 & 0 & 1
 \end{bmatrix}
 $$
 
@@ -135,7 +131,7 @@ T(t_x, t_y, t_z) = \begin{bmatrix}
 0 & 0 & 0 & t_x\\
 0 & 0 & 0 & t_y\\
 0 & 0 & 0 & t_z\\
-0 & 0 & 0 & 1 
+0 & 0 & 0 & 1
 \end{bmatrix}
 $$
 
@@ -168,7 +164,7 @@ R_x(\theta) = \begin{bmatrix}
 0 & 0 & 0 & 0\\
 0 & \cos\theta & -\sin\theta & 0\\
 0 & \sin\theta & \cos\theta & 0\\
-0 & 0 & 0 & 1 
+0 & 0 & 0 & 1
 \end{bmatrix}
 
 $$
@@ -243,8 +239,8 @@ $$
 * odredimo bounding-box (brzo)
 * izračunamo jednačine linija za svaku stranicu
 * za svaki piksel u BB:
-  * proverimo da li pripada 
-  
+  * proverimo da li pripada
+
 ---
 
 # depth-buffer

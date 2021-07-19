@@ -1,0 +1,20 @@
+/* @theme my_style */
+
+@import 'default';
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Source Code Pro Light";
+}
+
+* {
+  color: white !important;
+}
+
+section {
+  background: black;
+}
+
+.slide_footer,
+.slide_page {
+  font-family: "Source Code Pro"
+}

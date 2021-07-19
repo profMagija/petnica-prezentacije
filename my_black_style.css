@@ -1,0 +1,28 @@
+/* @theme my_black_style */
+
+@import 'default';
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Cascadia Code";
+    color: white;
+    font-weight: 300;
+}
+
+section {
+    background: black;
+    font-family: "Cascadia Code";
+    color: white;
+}
+
+strong  {
+    color: inherit !important;
+    font-weight: bold !important;
+}
+
+section::after {
+    font-family: "Cascadia Code";
+}
+
+pre {
+    background-color: black;
+}
