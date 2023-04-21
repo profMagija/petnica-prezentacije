@@ -2,7 +2,12 @@
 
 @import 'default';
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Cascadia Code";
     color: white;
     font-weight: 300;
@@ -14,7 +19,7 @@ section {
     color: white;
 }
 
-strong  {
+strong {
     color: inherit !important;
     font-weight: bold !important;
 }
@@ -24,5 +29,6 @@ section::after {
 }
 
 pre {
-    background-color: black;
+    background-color: lightgray;
+    color: black;
 }
