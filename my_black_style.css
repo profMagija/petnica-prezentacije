@@ -8,14 +8,14 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Cascadia Code";
+    font-family: "Fira Code";
     color: white;
     font-weight: 300;
 }
 
 section {
     background: black;
-    font-family: "Cascadia Code";
+    font-family: "Fira Code";
     color: white;
 }
 
@@ -25,10 +25,19 @@ strong {
 }
 
 section::after {
-    font-family: "Cascadia Code";
+    font-family: "Fira Code";
 }
 
 pre {
     background-color: lightgray;
     color: black;
+}
+
+code {
+    font-family: "Fira Code";
+}
+
+th,
+td {
+    background-color: black;
 }
