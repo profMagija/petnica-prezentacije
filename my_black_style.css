@@ -2,10 +2,6 @@
 
 @import 'default';
 
-* {
-    overflow: hidden hidden !important;
-}
-
 h1,
 h2,
 h3,
@@ -44,4 +40,8 @@ code {
 th,
 td {
     background-color: black;
+}
+
+li {
+    color: white;
 }
