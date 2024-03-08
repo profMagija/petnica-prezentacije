@@ -52,7 +52,6 @@ bebić / rač @ petnica / mart 2024
 
 ### problem - odakle nam instrukcije ?
 
-
 ---
 
 ### stored-program computer
@@ -78,8 +77,8 @@ bebić / rač @ petnica / mart 2024
 ### aritmetičke operacije
 
 ```
-add r3, r1, r2  ; r3 = r1 + r2
-sub r4, r3, r4  ; r4 = r3 - r4
+add r3, r1, r2  // r3 = r1 + r2
+sub r4, r3, r4  // r4 = r3 - r4
 ```
 
 ---
@@ -87,8 +86,8 @@ sub r4, r3, r4  ; r4 = r3 - r4
 ### memorijske operacije
 
 ```
-load r1, #10    ; r1 = mem[10]
-store #12, r2   ; mem[12] = r2
+load r1, #10    // r1 = mem[10]
+store #12, r2   // mem[12] = r2
 ```
 
 ---
@@ -124,7 +123,7 @@ store   #13, r3
 
 ---
 
-### šta je instrukcija ?
+### šta su zapravo zapravo instrukcije ?
 
 * broj
 * _program counter_
@@ -136,8 +135,7 @@ store   #13, r3
 ```
 add r0, r1, r2
 
-00000001 10000000
-XXXMRRPP DD------ 
+00010100 00000000 00000001 00000010
 ```
 
 ---
@@ -147,8 +145,7 @@ XXXMRRPP DD------
 ```
 add r1, r1, 42
 
-00010101 00101010
-XXXMRRPP IIIIIIII
+00010101 00000001 00000001 00101010
 ```
 
 ---
@@ -158,8 +155,7 @@ XXXMRRPP IIIIIIII
 ```
 load r1, #10
 
-11100010 00001010
-XXXYYYRR AAAAAAAA
+11000000 00000001 00001010
 ```
 
 ---
@@ -169,9 +165,12 @@ XXXYYYRR AAAAAAAA
 ```
 store #11, r0
 
-11100100 00001011
-XXXYYYRR AAAAAAAA
+11000001 00000000 00001011
 ```
+
+---
+
+### kako radi ALU ?
 
 ---
 
@@ -183,12 +182,14 @@ XXXYYYRR AAAAAAAA
 
 ---
 
-### kako radi ALU ?
-
----
-
 ### <center><font color="#555">predah</font></center>
 
 ---
 
 ### hajde da napravimo CPU
+
+---
+
+### definišemo ISA
+
+---
