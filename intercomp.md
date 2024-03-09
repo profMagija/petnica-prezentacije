@@ -129,6 +129,20 @@ Token nextToken() {
 
 ---
 
+### postoje alati koji to rade za nas
+
+---
+
+### lex / flex
+
+```
+%%
+[a-zA-Z]+    { return IDENTIFIER; }
+[0-9]+       { return NUMBER; }
+```
+
+---
+
 ### parsiranje
 
 ---
@@ -141,6 +155,24 @@ public Ast parseAdd() {
     
     return new AddNode(lhs, rhs);
 }
+```
+
+---
+
+### postoje alati koji to rade za nas
+
+---
+
+### yacc / bison
+
+```
+%%
+expression
+    : expression '+' expression
+    | expression '-' expression
+    | IDENTIFIER
+    | NUMBER
+    ;
 ```
 
 ---
@@ -284,8 +316,129 @@ class AddIntNode {
         Register lhs = this.lhs.generate(ctx);
         Register rhs = this.rhs.generate(ctx);
         ctx.generate("add", lhs, lhs, rhs);
+        ctx.releaseRegister(rhs);
         return lhs;
     }
+}
+```
+
+---
+
+### primer
+
+```c
+int fac(int x) {
+    if (x == 1) {
+        return 1;
+    } else {
+        return x * fac(x - 1);
+    }
+}
+```
+
+---
+
+```arm
+fac:
+.Lfunc_begin0:
+        sub     sp, sp, #32
+        stp     x29, x30, [sp, #16]
+        add     x29, sp, #16
+        str     w0, [sp, #8]
+        ldr     w8, [sp, #8]
+        subs    w8, w8, #1
+        b.ne    .LBB0_2
+        b       .LBB0_1
+.LBB0_1:
+        mov     w8, #1
+        stur    w8, [x29, #-4]
+        b       .LBB0_3
+        // ...
+```
+
+---
+
+```arm
+        // ...
+.LBB0_2:
+        ldr     w8, [sp, #8]
+        str     w8, [sp, #4]
+        ldr     w8, [sp, #8]
+        subs    w0, w8, #1
+        bl      fib
+        ldr     w8, [sp, #4]
+        mul     w8, w8, w0
+        stur    w8, [x29, #-4]
+        b       .LBB0_3
+.LBB0_3:
+        ldur    w0, [x29, #-4]
+        ldp     x29, x30, [sp, #16]
+        add     sp, sp, #32
+        ret
+```
+
+---
+
+### strogo tipovanje
+
+---
+
+### međureprezentacija
+
+---
+
+### međureprezentacija - LLVM
+
+```llvm
+define i32 @fac(i32 noundef %0) {
+  %2 = alloca i32, align 4
+  %3 = alloca i32, align 4
+  store i32 %0, ptr %3, align 4
+  %4 = load i32, ptr %3, align 4
+  %5 = icmp eq i32 %4, 1
+  br i1 %5, label %6, label %7
+
+6:                                                ; preds = %1
+  store i32 1, ptr %2, align 4
+  br label %13
+
+7:                                                ; preds = %1
+  %8 = load i32, ptr %3, align 4
+  %9 = load i32, ptr %3, align 4
+  %10 = sub nsw i32 %9, 1
+  %11 = call i32 @fac(i32 noundef %10)
+  %12 = mul nsw i32 %8, %11
+  store i32 %12, ptr %2, align 4
+  br label %13
+
+13:                                               ; preds = %7, %6
+  %14 = load i32, ptr %2, align 4
+  ret i32 %14
+}
+```
+
+---
+
+### optimizacija
+
+---
+
+### npr. `common subexpression elimination`
+
+```c
+int fac2() {
+    return fac(x) * fac(x);
+}
+```
+
+---
+
+### npr. `common subexpression elimination`
+
+```c
+int fac2() {
+    int t = fac(x);
+    return t * t;
 }
 ```
 
