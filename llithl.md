@@ -205,11 +205,11 @@ void daxpy(double alpha, double *x, double *y, size_t n) {
 ```
     ; f1 = alpha, r1 = x, r2 = y, r3 = n
 start:
-    f2 <- [r1]              ; x[i]
+    f2 <- load(r1)          ; x[i]
     f2 <- f2 * f1           ; x[i] * α
-    f3 <- [r2]              ; y[i]
+    f3 <- load(r2)          ; y[i]
     f3 <- f2 + f3           ; x[i] * α + y[i]
-    [r2] <- f3
+    store(r2) <- f3
     r1 <- r1 + 8            ; x++
     r2 <- r2 + 8            ; y++
     r3 <- r3 - 1            ; n--
